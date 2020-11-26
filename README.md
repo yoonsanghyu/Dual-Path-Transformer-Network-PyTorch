@@ -13,8 +13,7 @@ $ python preprocess.py --in-dir /data/min --out-dir data --sample-rate 8000
 $ python train.py
 ```
 
-##Reference
+## Reference
 
 https://github.com/kaituoxu/Conv-TasNet
-
 https://github.com/ujscjj/DPTNet
