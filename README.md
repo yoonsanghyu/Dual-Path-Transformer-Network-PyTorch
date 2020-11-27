@@ -1,6 +1,9 @@
 # Dual-Path-Transformer-Network-PyTorch
 Unofficial implementation of Dual-Path Transformer Network for speech separation(Interspeech 2020)
 
+☑️ Data pre-processing
+☑️ Training
+
 ## Data pre-processing
 
 -- in-dir: It means your WSJ2mix dataset directory. (It has tr/cv/tt folders)
