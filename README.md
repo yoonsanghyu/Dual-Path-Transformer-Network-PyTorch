@@ -20,7 +20,7 @@ $ python train.py
 If you change --out-dir option, you have to set --train_dir '{your_directory}/tr' --valid_dir '{your_directory}/cv' 
 
 ```bash
-$ python train.py --tr-
+$ python train.py --train_dir 'data/tr' --valid_dir 'data/cv'
 ```
 
 ## Reference
