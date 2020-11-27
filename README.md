@@ -1,9 +1,9 @@
 # Dual-Path-Transformer-Network-PyTorch
 Unofficial implementation of Dual-Path Transformer Network for speech separation(Interspeech 2020)
 
-☑️ Data pre-processing
-
-☑️ Training
+- [x] Data pre-processing
+- [x] Training
+- [ ] Inference
 
 ## Data pre-processing
 
