@@ -146,18 +146,16 @@ class Solver(object):
             # Save model each epoch
             if self.checkpoint:
                 file_path = os.path.join(
-                    self.save_folder, 'epoch%d.pth.tar' % (epoch + 1))
-                torch.save(self.model.module.serialize(self.model.module,
-                                                       self.optimizer, epoch + 1,
-                                                       tr_loss=self.tr_loss,
-                                                       cv_loss=self.cv_loss),
-                           file_path)
+                    self.save_folder, 'epoch%d.pth' % (epoch + 1))
+                torch.save(self.model.state_dict(), file_path)
+                print('Saving checkpoint model to %s' % file_path)
                 print('Saving checkpoint model to %s' % file_path)
 
             # Cross validation
             print('Cross validation...')
             self.model.eval()  # Turn off Batchnorm & Dropout
-            val_loss = self._run_one_epoch(epoch, cross_valid=True)
+            with torch.no_grad():
+                val_loss = self._run_one_epoch(epoch, cross_valid=True)
             print('-' * 85)
             print('Valid Summary | End of Epoch {0} | Time {1:.2f}s | '
                   'Valid Loss {2:.3f}'.format(
@@ -190,13 +188,10 @@ class Solver(object):
             self.cv_loss[epoch] = val_loss
             if val_loss < self.best_val_loss:
                 self.best_val_loss = val_loss
-                file_path = os.path.join(self.save_folder, self.model_path)
-                torch.save(self.model.module.serialize(self.model.module,
-                                                       self.optimizer, epoch + 1,
-                                                       tr_loss=self.tr_loss,
-                                                       cv_loss=self.cv_loss),
-                           file_path)
-                print("Find better validated model, saving to %s" % file_path)
+                best_file_path = os.path.join(
+                    self.save_folder, 'temp_best.pth')
+                torch.save(self.model.state_dict(), best_file_path)
+                print("Find better validated model, saving to %s" % best_file_path)
 
             # visualizing loss using visdom
             if self.visdom:
