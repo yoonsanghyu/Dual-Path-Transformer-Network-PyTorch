@@ -4,7 +4,7 @@
 
 import os
 import time
-
+import numpy as np
 import torch
 
 from pit_criterion import cal_loss
@@ -78,7 +78,7 @@ class Solver(object):
         self.tr_loader = data['tr_loader']
         self.cv_loader = data['cv_loader']
         self.model = model
-        self.optimizer =  TransformerOptimizer(optimizer, 0.2, args.N)
+        self.optimizer =  TransformerOptimizer(optimizer, 0.2, 64)
 
         # Training config
         self.use_cuda = args.use_cuda
@@ -114,12 +114,13 @@ class Solver(object):
         # Reset
         if self.continue_from:
             print('Loading checkpoint model %s' % self.continue_from)
-            package = torch.load(self.continue_from)
-            self.model.module.load_state_dict(package['state_dict'])
-            self.optimizer.load_state_dict(package['optim_dict'])
-            self.start_epoch = int(package.get('epoch', 1))
-            self.tr_loss[:self.start_epoch] = package['tr_loss'][:self.start_epoch]
-            self.cv_loss[:self.start_epoch] = package['cv_loss'][:self.start_epoch]
+            cont = torch.load(self.continue_from)
+            self.start_epoch = cont['epoch']
+            self.model.load_state_dict(cont['model_state_dict'])
+            self.optimizer.load_state_dict(cont['optimizer_state'])
+            torch.set_rng_state(cont['trandom_state'])
+            np.random.set_state(cont['nrandom_state'])
+
         else:
             self.start_epoch = 0
         # Create save folder
@@ -146,9 +147,13 @@ class Solver(object):
             # Save model each epoch
             if self.checkpoint:
                 file_path = os.path.join(
-                    self.save_folder, 'epoch%d.pth' % (epoch + 1))
-                torch.save(self.model.state_dict(), file_path)
-                print('Saving checkpoint model to %s' % file_path)
+                    self.save_folder, 'epoch%d.pth.tar' % (epoch + 1))
+                torch.save({
+                    'epoch': epoch+1,
+                    'model_state_dict': self.model.state_dict(),
+                    'optimizer_state': self.optimizer.state_dict(),
+                    'trandom_state': torch.get_rng_state(),
+                    'nrandom_state': np.random.get_state()}, file_path)
                 print('Saving checkpoint model to %s' % file_path)
 
             # Cross validation
@@ -189,8 +194,13 @@ class Solver(object):
             if val_loss < self.best_val_loss:
                 self.best_val_loss = val_loss
                 best_file_path = os.path.join(
-                    self.save_folder, 'temp_best.pth')
-                torch.save(self.model.state_dict(), best_file_path)
+                    self.save_folder, 'temp_best.pth.tar')
+                torch.save({
+                    'epoch': epoch+1,
+                    'model_state_dict': self.model.state_dict(),
+                    'optimizer_state': self.optimizer.state_dict(),
+                    'trandom_state': torch.get_rng_state(),
+                    'nrandom_state': np.random.get_state()}, best_file_path)
                 print("Find better validated model, saving to %s" % best_file_path)
 
             # visualizing loss using visdom
