@@ -4,7 +4,7 @@ Unofficial implementation of Dual-Path Transformer Network for speech separation
 ## Plan
 - [x] Data pre-processing
 - [x] Training
-- [x] Inference
+- [ ] Inference
 
 ## Data pre-processing
 
