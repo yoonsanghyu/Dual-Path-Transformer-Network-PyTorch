@@ -34,7 +34,7 @@ parser.add_argument('--N', default=64, type=int,
                     help='Number of filters in autoencoder')
 parser.add_argument('--C', default=2, type=int, 
                     help='Maximum number of speakers')
-parser.add_argument('--L', default=16, type=int, 
+parser.add_argument('--L', default=4, type=int, 
                     help='Length of window in autoencoder') # L=2 in paper
 parser.add_argument('--H', default=4, type=int, 
                     help='Number of head in Multi-head attention')
