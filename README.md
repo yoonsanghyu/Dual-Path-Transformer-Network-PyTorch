@@ -31,7 +31,6 @@ $ python train.py --train_dir 'data/tr' --valid_dir 'data/cv'
 
 ## Inference
 
-you can test with pre-trained model('exp/temp/temp_best.pth.tar') or model that you train.
 
 ```bash
 $ python evaluate.py --model_path 'exp/temp/temp_best.pth.tar'
