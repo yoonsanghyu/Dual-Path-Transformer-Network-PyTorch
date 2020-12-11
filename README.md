@@ -7,7 +7,7 @@ Unofficial implementation of Dual-Path Transformer Network (DPTNet) for speech s
 - [x] Data pre-processing
 - [x] Training
 - [x] Inference
-- [] Separate
+- [x] Separate
 
 ## Data pre-processing
 
