@@ -31,11 +31,13 @@ $ python train.py --train_dir 'data/tr' --valid_dir 'data/cv'
 
 ## Reference
 
+you can test with pre-trained model('exp/temp/temp_best.pth.tar') or model that you train.
+
 ```bash
 $ python evaluate.py --model_path 'exp/temp/temp_best.pth.tar'
 ```
 
-If you change --out-dir option, you have to set --train_dir '{your_directory}/tr' --valid_dir '{your_directory}/cv' 
+If you change --out-dir option, you have to set --train_dir '{your_directory}/tr' --valid_dir '{your_directory}/cv' --model_path 'your_model_path'
 
 ```bash
 $ python evaluate.py --train_dir 'data/tr' --valid_dir 'data/cv' --model_path 'exp/temp/temp_best.pth.tar'
@@ -43,7 +45,7 @@ $ python evaluate.py --train_dir 'data/tr' --valid_dir 'data/cv' --model_path 'e
 
 ## Result
 
-I achive SI-SNRi 19.84dB when L=4 (encoder kernel length)
+I achive SI-SNRi **19.84dB** when L=4 (encoder kernel length)
 
 
 https://github.com/kaituoxu/Conv-TasNet
