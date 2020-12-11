@@ -29,7 +29,7 @@ If you change --out-dir option, you have to set --train_dir '{your_directory}/tr
 $ python train.py --train_dir 'data/tr' --valid_dir 'data/cv'
 ```
 
-## Reference
+## Inference
 
 you can test with pre-trained model('exp/temp/temp_best.pth.tar') or model that you train.
 
@@ -48,6 +48,7 @@ $ python evaluate.py --train_dir 'data/tr' --valid_dir 'data/cv' --model_path 'e
 I achive SI-SNRi **19.84dB** when L=4 (encoder kernel length)
 
 
+## Reference
 https://github.com/kaituoxu/Conv-TasNet
 
 https://github.com/ujscjj/DPTNet
