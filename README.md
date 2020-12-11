@@ -1,5 +1,5 @@
 # Dual-Path-Transformer-Network-PyTorch
-Unofficial implementation of Dual-Path Transformer Network for speech separation(Interspeech 2020)
+Unofficial implementation of Dual-Path Transformer Network (DPTNet) for speech separation (Interspeech 2020)
 
 ## Plan
 
