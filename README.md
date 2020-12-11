@@ -36,10 +36,10 @@ $ python train.py --train_dir 'data/tr' --valid_dir 'data/cv'
 $ python evaluate.py --model_path 'exp/temp/temp_best.pth.tar'
 ```
 
-If you change --out-dir option, you have to set --train_dir '{your_directory}/tr' --valid_dir '{your_directory}/cv' --model_path 'your_model_path'
+If you change --out-dir option, you have to set --data_dir '{your_directory}/tt'
 
 ```bash
-$ python evaluate.py --train_dir 'data/tr' --valid_dir 'data/cv' --model_path 'exp/temp/temp_best.pth.tar'
+$ python evaluate.py --data_dir 'data/tt' --model_path 'exp/temp/temp_best.pth.tar'
 ```
 
 ## Result
