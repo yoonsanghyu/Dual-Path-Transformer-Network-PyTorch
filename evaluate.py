@@ -40,7 +40,7 @@ parser.add_argument('--model_path', type=str, default='exp/temp/temp_best.pth.ta
                     help='Path to model file created by training')
 parser.add_argument('--data_dir', type=str, default='data/tt',
                     help='directory including mix.json, s1.json and s2.json')
-parser.add_argument('--cal_sdr', type=int, default=0,
+parser.add_argument('--cal_sdr', type=int, default=1,
                     help='Whether calculate SDR, add this option because calculation of SDR is very slow')
 parser.add_argument('--use_cuda', type=int, default=0,
                     help='Whether use GPU')
