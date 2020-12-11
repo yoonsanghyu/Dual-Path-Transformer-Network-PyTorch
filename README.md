@@ -4,7 +4,8 @@ Unofficial implementation of Dual-Path Transformer Network for speech separation
 ## Plan
 - [x] Data pre-processing
 - [x] Training
-- [ ] Inference
+- [x] Inference
+- [ ] Separate
 
 ## Data pre-processing
 
@@ -29,6 +30,21 @@ $ python train.py --train_dir 'data/tr' --valid_dir 'data/cv'
 ```
 
 ## Reference
+
+```bash
+$ python evaluate.py --model_path 'exp/temp/temp_best.pth.tar'
+```
+
+If you change --out-dir option, you have to set --train_dir '{your_directory}/tr' --valid_dir '{your_directory}/cv' 
+
+```bash
+$ python evaluate.py --train_dir 'data/tr' --valid_dir 'data/cv' --model_path 'exp/temp/temp_best.pth.tar'
+```
+
+## Result
+
+I achive SI-SNRi 19.84dB when L=4 (encoder kernel length)
+
 
 https://github.com/kaituoxu/Conv-TasNet
 
