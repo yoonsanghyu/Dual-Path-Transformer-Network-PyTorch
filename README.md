@@ -50,10 +50,28 @@ If you change --out-dir option, you have to set --data_dir '{your_directory}/tt'
 $ python evaluate.py --data_dir 'data/tt' --model_path 'exp/temp/temp_best.pth.tar'
 ```
 
+## Separate
+
+```bash
+$ python separate.py --model_path 'exp/temp/temp_best.pth.tar'
+```
+
+
+If you change --out-dir option, you have to set --data_dir '{your_directory}/tt'
+
+
+```bash
+$ python evaluate.py --mix_json 'data/tt' --model_path 'exp/temp/temp_best.pth.tar'
+```
+
+
+
 ## Result
 
 
 I achive SI-SNRi **19.84dB** when L=4 (encoder kernel length)
+
+You can check the separated audio file samples in the result directory.
 
 
 ## Reference
