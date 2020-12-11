@@ -71,7 +71,7 @@ $ python evaluate.py --mix_json 'data/tt' --model_path 'exp/temp/temp_best.pth.t
 
 I achive SI-SNRi **19.84dB** when L=4 (encoder kernel length)
 
-You can check the separated audio file samples in the result directory.
+You can check the separated audio samples in the result directory.
 
 
 ## Reference
