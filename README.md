@@ -57,7 +57,7 @@ $ python separate.py --model_path 'exp/temp/temp_best.pth.tar'
 ```
 
 
-If you change --out-dir option, you have to set --data_dir '{your_directory}/tt'
+If you change --out-dir option, you have to set --mix_json '{your_directory}/tt'
 
 
 ```bash
