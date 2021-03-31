@@ -69,7 +69,7 @@ $ python evaluate.py --mix_json 'data/tt/mix.json' --model_path 'exp/temp/temp_b
 ## Result
 
 
-I achive SI-SNRi **19.84dB** when L=4 (encoder kernel length)
+We achive SI-SNRi **19.84dB** when L=4 (encoder kernel length)
 
 You can check the separated audio samples in the result directory.
 
